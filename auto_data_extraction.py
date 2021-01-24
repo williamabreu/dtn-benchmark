@@ -6,7 +6,7 @@ PATH = os.path.dirname(os.path.realpath(__file__))
 with open(f'{PATH}/META.json') as fp:
     META = json.load(fp)
 
-OUTPUT = {}
+OUTPUT = []
 
 for index in META:
     transmit_range = META[index]["transmit_range"]
@@ -27,19 +27,15 @@ for index in META:
                     delivery_prob = float(line.replace('delivery_prob: ', ''))
     except:
         pass
-    OUTPUT[index] = {
-        'input': {
-            "routing_protocol": routing_protocol,
-            "transmit_range": transmit_range,
-            "buffer_size": buffer_size,
-            "amount_nodes": amount_nodes
-        },
-        'output': {
-            "overhead_ratio": overhead_ratio,
-            "latency_avg": latency_avg,
-            "delivery_prob": delivery_prob
-        }
-    }
+    OUTPUT.append({
+        "routing_protocol": routing_protocol,
+        "transmit_range": transmit_range,
+        "buffer_size": buffer_size,
+        "amount_nodes": amount_nodes,
+        "overhead_ratio": overhead_ratio,
+        "latency_avg": latency_avg,
+        "delivery_prob": delivery_prob,
+    })
         
 with open(f'{PATH}/DATA.json', 'w') as fp:
     json.dump(OUTPUT, fp, indent=2)
