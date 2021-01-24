@@ -1,0 +1,8 @@
+{
+    "001": {
+        "routing_protocol": "ProphetRouter",
+        "transmit_range": 5,
+        "buffer_size": "25M",
+        "amount_nodes": 20
+    }
+}
